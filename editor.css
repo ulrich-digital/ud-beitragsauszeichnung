@@ -1,8 +1,0 @@
-body.editor-post-is-highlighted .is-root-container > .wp-block > .block-editor-inner-blocks > .wp-block-group-is-layout-flex{
-    outline: 0px solid #f0b400;
-	border-width: 3px;
-	border-style: solid;
-	border-radius: 16px;
-	background-color: var(--wp--preset--color--highlight-100,#CCE2CF);
-	border-color: var(--wp--preset--color--highlight-500,#4C9C5A);
-}
