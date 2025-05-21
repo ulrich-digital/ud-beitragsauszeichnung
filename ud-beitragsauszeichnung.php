@@ -13,6 +13,7 @@
 
 defined('ABSPATH') || exit;
 
-foreach (glob(__DIR__ . '/includes/*.php') as $file) {
-    require_once $file;
-}
+
+require_once __DIR__ . '/includes/enqueue.php';
+require_once __DIR__ . '/includes/meta.php';
+require_once __DIR__ . '/includes/render.php';

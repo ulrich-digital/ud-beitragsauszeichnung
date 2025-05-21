@@ -5,4 +5,4 @@
 // optional
 /******/ })()
 ;
-//# sourceMappingURL=frontend.js.map
+//# sourceMappingURL=frontend-script.js.map

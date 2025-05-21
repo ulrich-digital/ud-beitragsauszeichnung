@@ -14,10 +14,10 @@ add_action('enqueue_block_assets', function () {
     $path = plugin_dir_path(__DIR__);
 
     wp_enqueue_script(
-        'beitragsauszeichnung-editor',
-        $base . 'build/editor.js',
+        'beitragsauszeichnung-editor-script',
+        $base . 'build/editor-script.js',
         ['wp-plugins', 'wp-edit-post', 'wp-components', 'wp-element', 'wp-data'],
-        filemtime($path . 'build/editor.js'),
+        filemtime($path . 'build/editor-script.js'),
         true
     );
 
@@ -39,10 +39,10 @@ add_action('wp_enqueue_scripts', function () {
     $path = plugin_dir_path(__DIR__);
 
     wp_enqueue_script(
-        'beitragsauszeichnung-frontend',
-        $base . 'build/frontend.js',
+        'beitragsauszeichnung-frontend-script',
+        $base . 'build/frontend-script.js',
         [],
-        filemtime($path . 'build/frontend.js'),
+        filemtime($path . 'build/frontend-script.js'),
         true
     );
 
