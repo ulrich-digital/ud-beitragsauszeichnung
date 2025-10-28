@@ -21,6 +21,13 @@ add_action('enqueue_block_assets', function () {
         true
     );
 
+wp_localize_script(
+	'beitragsauszeichnung-editor-script',
+	'udHighlightSettings',
+	[
+		'enabledPostTypes' => get_option('ud_highlight_enabled_post_types', ['post']), // Fallback
+	]
+);
 
     wp_enqueue_style(
         'beitragsauszeichnung-editor-style',

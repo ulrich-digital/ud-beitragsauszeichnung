@@ -1,11 +1,4 @@
 /*!**********************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/css/frontend.scss ***!
   \**********************************************************************************************************************************************************************************************************************************************/
-.is-highlighted {
-  border-width: 1.5px;
-  border-style: solid;
-  border-color: var(--wp--preset--color--highlight-500, #4C9C5A);
-  background-color: var(--wp--preset--color--highlight-100, #CCE2CF);
-}
 
-/*# sourceMappingURL=frontend-style.css.map*/

@@ -20,37 +20,38 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /**
- * Synchronisiert die Klasse "editor-post-is-highlighted" mit dem Beitragsstatus:
- * - Fügt sie immer dem Haupt-body hinzu
- * - Wenn ein Gutenberg-iFrame vorhanden ist, auch dort
- * - Stoppt automatisch nach 10 Sekunden
+ * Synchronisiert die Klasse "is-highlighted" mit dem Beitragsstatus
+ * direkt am besten passenden Block im Gutenberg-Editor.
  */
 const BodyClassSync = () => {
   const isHighlighted = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_1__.useSelect)(select => {
     const meta = select("core/editor").getEditedPostAttribute("meta");
-    return meta?._is_highlighted === "1";
+    return meta?._is_highlighted == true;
   });
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    document.body.classList.toggle("editor-post-is-highlighted", isHighlighted);
-    let interval = null;
-    let timeout = null;
-    const applyClassToIframe = () => {
-      const iframe = document.querySelector('iframe[name="editor-canvas"]');
-      if (!iframe?.contentDocument?.body) return;
-      iframe.contentDocument.body.classList.toggle("editor-post-is-highlighted", isHighlighted);
-      clearInterval(interval);
-      clearTimeout(timeout);
-    };
-    interval = setInterval(applyClassToIframe, 100);
-    timeout = setTimeout(() => clearInterval(interval), 10000);
-    return () => {
-      document.body.classList.remove("editor-post-is-highlighted");
-      const iframe = document.querySelector('iframe[name="editor-canvas"]');
-      if (iframe?.contentDocument?.body) {
-        iframe.contentDocument.body.classList.remove("editor-post-is-highlighted");
+    const applyClassToEditorBlock = () => {
+      const doc = document;
+      const iframe = doc.querySelector('iframe[name="editor-canvas"]');
+      const targetDoc = iframe?.contentDocument || doc;
+
+      // Priorisierte Suche nach passenden Blöcken
+      const target = targetDoc.querySelector(".wp-block-ud-news-loop-content") || targetDoc.querySelector(".wp-block-ud-event-loop-content") || targetDoc.querySelector(".wp-block-group") || targetDoc.querySelector(".wp-block");
+      if (target) {
+        target.classList.toggle("is-highlighted", isHighlighted);
       }
+    };
+
+    // Initial + Verzögerung für iFrame (Editor)
+    applyClassToEditorBlock();
+    const interval = setInterval(applyClassToEditorBlock, 300);
+    const timeout = setTimeout(() => clearInterval(interval), 5000);
+    return () => {
       clearInterval(interval);
       clearTimeout(timeout);
+      const iframe = document.querySelector('iframe[name="editor-canvas"]');
+      const targetDoc = iframe?.contentDocument || document;
+      const blocks = targetDoc.querySelectorAll(".is-highlighted");
+      blocks.forEach(el => el.classList.remove("is-highlighted"));
     };
   }, [isHighlighted]);
   return null;
@@ -85,23 +86,33 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * Einfache Metabox zur Steuerung der "Hervorhebung" eines Beitrags.
  */
+
 const HighlightTogglePanel = () => {
+  const postType = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.useSelect)(select => select("core/editor").getCurrentPostType(), []);
   const meta = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.useSelect)(select => select("core/editor").getEditedPostAttribute("meta"));
+  if (!meta) {
+    return null;
+  }
   const {
     editPost
   } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.useDispatch)("core/editor");
-  const isHighlighted = meta?._is_highlighted === "1";
+
+  // Zugriff auf Optionen aus PHP
+  const enabledPostTypes = window.udHighlightSettings?.enabledPostTypes || [];
+
+  // Früher Ausstieg, wenn nicht aktiviert
+  if (!enabledPostTypes.includes(postType)) return null;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__.PluginDocumentSettingPanel, {
-    name: "beitragsauszeichnung-panel",
-    title: "Beitragsauszeichnung",
-    className: "beitragsauszeichnung-panel"
+    name: "highlight-post-panel",
+    title: "Beitrag hervorheben",
+    className: "highlight-post-panel"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
     label: "Beitrag hervorheben",
-    checked: isHighlighted,
-    onChange: value => editPost({
+    checked: !!meta._is_highlighted,
+    onChange: val => editPost({
       meta: {
         ...meta,
-        _is_highlighted: value ? "1" : ""
+        _is_highlighted: val
       }
     }),
     __nextHasNoMarginBottom: true
