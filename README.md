@@ -13,8 +13,8 @@ Die Farben basieren auf Theme-Variablen (z. B. --wp--preset--color--highlight-
 
 ## Anwendung
 
-Aktiviere im Dokument-Panel des Editors die Option „Beitrag hervorheben“.  
-Das Plugin weist dem Beitrag automatisch die CSS-Klasse `is-highlighted` zu.  
+Aktiviere im Dokument-Panel des Editors die Option „Beitrag hervorheben“.
+Das Plugin weist dem Beitrag automatisch die CSS-Klasse `is-highlighted` zu.
 
 **💡 Damit die Hervorhebung korrekt im Editor sichtbar ist, wird die zusätzliche Klasse editor-post-is-highlighted gezielt im iFrame‑<body> des Block-Editors gesetzt, da Gutenberg Inhalte in einem isolierten iFrame rendert**
 
@@ -22,12 +22,12 @@ Das Plugin weist dem Beitrag automatisch die CSS-Klasse `is-highlighted` zu.
 
 ### Im Editor
 
-![Editor-Ansicht](./assets/beitragsauszeichnung_editor.png)  
+![Editor-Ansicht](./assets/beitragsauszeichnung_editor.png)
 *Abbildung: Der Beitrag ist im Editor durch grüne Hinterlegung hervorgehoben.*
 
 ### Im Frontend
 
-![Frontend-Ansicht](./assets/beitragsauszeichnung_frontend.png)  
+![Frontend-Ansicht](./assets/beitragsauszeichnung_frontend.png)
 *Abbildung: Im Frontend zeigt sich die Hervorhebung mit den definierten Farben – basierend auf Theme-Variablen oder Fallbacks.*
 
 ## CSS-Auszug
@@ -42,3 +42,11 @@ border-color: var(--wp--preset--color--highlight-500, #4C9C5A);
 1. Plugin in den Ordner wp-content/plugins/ kopieren
 2. Plugin im WordPress-Backend aktivieren
 3. Optionale CSS-Klasse is-highlighted in einem Beitrag oder Block verwenden
+
+<!--
+Interne Verwendung:
+Eingesetzt in den Projekten
+- illgau.ch
+- schule.illgau.ch
+- bbzg.ch
+-->
