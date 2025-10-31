@@ -1,4 +1,4 @@
-# Beitragsauszeichnung (Editor-Erweiterung für WordPress)
+# UD Plugin: Beitragsauszeichnung
 
 Dieses Plugin ermöglicht es, Beiträge oder Blöcke im Editor und im Frontend visuell hervorzuheben. Ideal für Hinweise, wichtige Beiträge oder visuelle Gruppierungen im Layout.
 Die Farben basieren auf Theme-Variablen (z. B. --wp--preset--color--highlight-500) und haben Fallbacks, falls keine Theme-Farben definiert sind.
