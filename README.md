@@ -11,6 +11,14 @@ Die Farben basieren auf Theme-Variablen (z. B. --wp--preset--color--highlight-
 - Fallback-Farben für Kompatibilität ohne Block-Themes
 - Automatisches Setzen der CSS-Klasse auch im Editor‑iFrame (Canvas‑Bereich)
 
+## Screenshots
+
+![Frontend-Ansicht](./assets/beitragsauszeichnung_frontend.png)
+*Im Frontend zeigt sich die Hervorhebung mit den definierten Farben – basierend auf Theme-Variablen oder Fallbacks.*
+
+![Editor-Ansicht](./assets/beitragsauszeichnung_editor.png)
+*Der Beitrag ist im Editor durch grüne Hinterlegung hervorgehoben.*
+
 ## Anwendung
 
 Aktiviere im Dokument-Panel des Editors die Option „Beitrag hervorheben“.
@@ -18,30 +26,19 @@ Das Plugin weist dem Beitrag automatisch die CSS-Klasse `is-highlighted` zu.
 
 **💡 Damit die Hervorhebung korrekt im Editor sichtbar ist, wird die zusätzliche Klasse editor-post-is-highlighted gezielt im iFrame‑<body> des Block-Editors gesetzt, da Gutenberg Inhalte in einem isolierten iFrame rendert**
 
-## Vorschau
 
-### Im Editor
 
-![Editor-Ansicht](./assets/beitragsauszeichnung_editor.png)
-*Abbildung: Der Beitrag ist im Editor durch grüne Hinterlegung hervorgehoben.*
+## Autor
 
-### Im Frontend
+[ulrich.digital gmbh](https://ulrich.digital)
 
-![Frontend-Ansicht](./assets/beitragsauszeichnung_frontend.png)
-*Abbildung: Im Frontend zeigt sich die Hervorhebung mit den definierten Farben – basierend auf Theme-Variablen oder Fallbacks.*
 
-## CSS-Auszug
+## Lizenz
 
-```css
-background-color: var(--wp--preset--color--highlight-100, #CCE2CF);
-border-color: var(--wp--preset--color--highlight-500, #4C9C5A);
-```
+GPL v2 or later
+[https://www.gnu.org/licenses/gpl-2.0.html](https://www.gnu.org/licenses/gpl-2.0.html)
 
-## Installation
 
-1. Plugin in den Ordner wp-content/plugins/ kopieren
-2. Plugin im WordPress-Backend aktivieren
-3. Optionale CSS-Klasse is-highlighted in einem Beitrag oder Block verwenden
 
 <!--
 Interne Verwendung:
