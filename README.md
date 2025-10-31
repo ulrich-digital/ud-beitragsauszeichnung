@@ -19,14 +19,6 @@ Die Farben basieren auf Theme-Variablen (z. B. --wp--preset--color--highlight-
 ![Editor-Ansicht](./assets/beitragsauszeichnung_editor.png)
 *Der Beitrag ist im Editor durch grüne Hinterlegung hervorgehoben.*
 
-## Anwendung
-
-Aktiviere im Dokument-Panel des Editors die Option „Beitrag hervorheben“.
-Das Plugin weist dem Beitrag automatisch die CSS-Klasse `is-highlighted` zu.
-
-**💡 Damit die Hervorhebung korrekt im Editor sichtbar ist, wird die zusätzliche Klasse editor-post-is-highlighted gezielt im iFrame‑<body> des Block-Editors gesetzt, da Gutenberg Inhalte in einem isolierten iFrame rendert**
-
-
 
 ## Autor
 
