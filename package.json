@@ -1,13 +1,13 @@
 {
-    "name": "ud-beitragsauszeichnung",
-    "version": "1.0.0",
-    "scripts": {
-        "build": "webpack --config webpack.config.js",
-        "start": "webpack --watch --config webpack.config.js"
-    },
-    "author": "ulrich.digital gmbh",
-    "license": "GPL-2.0-or-later",
-    "devDependencies": {
-        "@wordpress/scripts": "^27.0.0"
-    }
+  "name": "ud-beitragsauszeichnung",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "start": "webpack --watch --config webpack.config.js"
+  },
+  "author": "ulrich.digital gmbh",
+  "license": "GPL-2.0-or-later",
+  "devDependencies": {
+    "@wordpress/scripts": "^30.18.0"
+  }
 }
